@@ -16,6 +16,3 @@ Pause Menu texte
 CalmAl
 ########support sur discord en ticket ############"
 https://discord.gg/9vGHyb3Py2
-https://discord.gg/9vGHyb3Py2
-https://discord.gg/9vGHyb3Py2
-https://discord.gg/9vGHyb3Py2
