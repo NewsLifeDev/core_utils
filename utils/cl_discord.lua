@@ -11,6 +11,6 @@ Citizen.CreateThread(function()
 		 SetDiscordRichPresenceAction(0, "nom du bouton", "liens")
 		 SetDiscordRichPresenceAction(1, "nom du bouton", "liens")
 		 --SetDiscordRichPresenceAction(1, "nom du bouton", "liens")
-		Citizen.Waite(15000)
+		Citizen.Wait(15000)
 end
 end)
