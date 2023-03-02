@@ -1,0 +1,16 @@
+Citizen.CreateThread(function()
+	while true do
+		local pId = GetPlayerServerId(PlayerId())
+		local name = GetPlayerName(PlayerId())
+		SetDiscordAppId(token discord)
+		SetDiscordRichPresenceAsset('Image')
+		SetDiscordRichPresenceAssetText('freeroam NL_Dev')
+		SetRichPresence("["..pId.."]"..name.." | "..#GetActivePlayers() .." / 4 Players")
+		SetDiscordRichPresenceAssetSmall('Imgaegrande')
+		SetDiscordRichPresenceAssetText('description')
+		 SetDiscordRichPresenceAction(0, "nom du bouton", "liens")
+		 SetDiscordRichPresenceAction(1, "nom du bouton", "liens")
+		 --SetDiscordRichPresenceAction(1, "nom du bouton", "liens")
+		Citizen.Waite(15000)
+end
+end)
