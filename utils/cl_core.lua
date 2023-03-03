@@ -356,3 +356,55 @@ function Tomber()
 end
 
 RegisterKeyMapping('ragdoll', 'Tomber par terre', 'keyboard', 'J')
+-------------------------------------------------------------------
+--------------------------------------Antit Jump----------------
+local NombreJUmp = 15
+
+Citizen.CreateThread(function()
+local Jump = 0
+while true do
+	Citizen.Wait(1)
+	local ped = PlayerPedId()
+	if IsPedOnFoot(ped) and IsPedSwimming(ped) and IsPedSprinting(ped) and not IsPedClimbing(ped) and IsPedJumping(ped) and not IsPedRagoll(ped) then 
+		Jump = Jump + 1
+		if Jump == NombreJUmp then 
+			SetPedRagdoll(ped, 5000, 1400, 2)
+			Jump = 0
+             end
+         else
+         	Citizen.Wait(500)
+
+      end
+   end
+end)
+--------------------pour vos event----------------------------------------------------------------------------------------------
+----------------------------neige----------------
+--[[
+Citizen.CreateThread(function()
+while true do 
+SetWeatherTypePersist("XMAS")
+SetWeatherTypeNowPersist("XMAS")
+SetWeatherTypeNow("XMAS")
+SetOverrideWeather("XMAS")
+Citizen.Wait(0)
+end
+end)
+--]]
+
+----------------------------HALLOWEEN----------------
+--[[
+Citizen.CreateThread(function()
+while true do 
+SetWeatherTypePersist("HALLOWEEN")
+SetWeatherTypeNowPersist("HALLOWEEN")
+SetWeatherTypeNow("HALLOWEEN")
+SetOverrideWeather("HALLOWEEN")
+Citizen.Wait(0)
+end
+end)
+--]]
+-------------------------------------------------------------------------------------------------------------------------
+
+
+
+
