@@ -10,9 +10,12 @@ client_scripts({
  "cl_core.lua",
  "cl_discord.lua",
  "cl_pmenu.lua",
+ "teleport.lua",
 
 
  });
+
+
 
 
        
