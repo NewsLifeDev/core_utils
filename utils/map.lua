@@ -12,3 +12,30 @@ Citizen.CreateThread(function()
         Citizen.Wait(5000)
     end
 end)
+
+----------------blips
+local blips = {
+            -- Example {title="", colour=, id=, x=, y=, z=},
+          {title="Cayo Perico", colour=28, id=256, x = 3053.27, y = -4625.84, z = 15.26},  ---ltd nord
+
+
+          
+        
+          }
+              
+        
+        
+          Citizen.CreateThread(function()
+        
+            for _, info in pairs(blips) do
+              info.blip = AddBlipForCoord(info.x, info.y, info.z)
+              SetBlipSprite(info.blip, info.id)
+              SetBlipDisplay(info.blip, 4)
+              SetBlipScale(info.blip, 0.5)
+              SetBlipColour(info.blip, info.colour)
+              SetBlipAsShortRange(info.blip, true)
+              BeginTextCommandSetBlipName("STRING")
+              AddTextComponentString(info.title)
+              EndTextCommandSetBlipName(info.blip)
+            end
+        end)
