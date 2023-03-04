@@ -11,6 +11,7 @@ client_scripts({
  "cl_discord.lua",
  "cl_pmenu.lua",
  "teleport.lua",
+  "map.lua",
 
 
  });
