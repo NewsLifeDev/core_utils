@@ -404,7 +404,76 @@ end
 end)
 --]]
 -------------------------------------------------------------------------------------------------------------------------
+-----------------------------desactiver la roulade-----------------------------------------------------------------------------------
+Citizen.CreateThread(function()
+    while true do
+        Citizen.Wait(5)
+        if IsControlPressed(0, 25)
+            then DisableControlAction(0, 22, true)
 
+        end
+    end
+end)
+
+----------------------------drive by--------------------------------------------
+local passengerDriveBy = true
+
+Citizen.CreateThread(function()
+    while true do
+        Wait(1)
+
+        playerPed = GetPlayerPed(-1)
+        car = GetVehiclePedIsIn(playerPed, false)
+        if car then
+            if GetPedInVehicleSeat(car, -1) == playerPed then
+                SetPlayerCanDoDriveBy(PlayerId(), false)
+            elseif passengerDriveBy then
+                SetPlayerCanDoDriveBy(PlayerId(), true)
+            else
+                SetPlayerCanDoDriveBy(PlayerId(), false)
+            end
+        end
+    end
+end)
+
+-------désactiver-mini-map
+
+Citizen.CreateThread(function()
+    while true do
+    Citizen.Wait(0)
+        local playerPed = GetPlayerPed(-1)
+        local playerVeh = GetVehiclePedIsIn(playerPed, false)
+        if IsPedInAnyVehicle(playerPed, true) then
+            DisplayRadar(true)
+        else
+            DisplayRadar(false)
+        end
+    end
+end)
+-----------Désactiver les vols de véhicules PNJ
+
+Citizen.CreateThread(function()
+    while true do
+        Wait(800)
+
+        local player = GetPlayerPed(-1)
+        local PlayerPedId = PlayerPedId(player)
+
+        local veh = GetVehiclePedIsTryingToEnter(PlayerPedId)
+        if veh ~= nil and DoesEntityExist(veh) then
+
+            local lockStatus = GetVehicleDoorLockStatus(veh)
+            if lockStatus == 7 then
+                SetVehicleDoorsLocked(veh, 2)
+            end
+
+            local ped = GetPedInVehicleSeat(veh, -1)
+            if ped then
+                SetPedCanBeDraggedOut(ped, false)
+            end
+
+        end
+    end
 
 
 
