@@ -3,7 +3,7 @@ games { 'gta5' };
 
 server_scripts({
     "srv.lua",
-    '@mysql-async/lib/MySQL.lua'
+    '@oxmysql/lib/MySQL.lua',
 });
 
 client_scripts({
@@ -16,9 +16,10 @@ client_scripts({
 
  });
 
+shared_script({
+ '@es_extended/imports.lua',
 
-
-
+});
        
 
 
