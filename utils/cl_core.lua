@@ -4,7 +4,7 @@ print ('Script created by ! ^1Newslife')
 
 Citizen.CreateThread(function()
     while ESX == nil do
-	    TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+	    ESX = exports["es_extended"]:getSharedObject()
 	    Citizen.Wait(0)
     end  
 end)
@@ -435,45 +435,3 @@ Citizen.CreateThread(function()
         end
     end
 end)
-
--------désactiver-mini-map
-
-Citizen.CreateThread(function()
-    while true do
-    Citizen.Wait(0)
-        local playerPed = GetPlayerPed(-1)
-        local playerVeh = GetVehiclePedIsIn(playerPed, false)
-        if IsPedInAnyVehicle(playerPed, true) then
-            DisplayRadar(true)
-        else
-            DisplayRadar(false)
-        end
-    end
-end)
------------Désactiver les vols de véhicules PNJ
-
-Citizen.CreateThread(function()
-    while true do
-        Wait(800)
-
-        local player = GetPlayerPed(-1)
-        local PlayerPedId = PlayerPedId(player)
-
-        local veh = GetVehiclePedIsTryingToEnter(PlayerPedId)
-        if veh ~= nil and DoesEntityExist(veh) then
-
-            local lockStatus = GetVehicleDoorLockStatus(veh)
-            if lockStatus == 7 then
-                SetVehicleDoorsLocked(veh, 2)
-            end
-
-            local ped = GetPedInVehicleSeat(veh, -1)
-            if ped then
-                SetPedCanBeDraggedOut(ped, false)
-            end
-
-        end
-    end
-
-
-
